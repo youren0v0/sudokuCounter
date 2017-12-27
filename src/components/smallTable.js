@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './table.less';
+
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {getTabelNum} from '../store/actions'

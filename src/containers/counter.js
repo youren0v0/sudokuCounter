@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {getTabelNum} from '../store/actions'
 
-class One extends Component {
+class Counter extends Component {
   confirm () {
     alert(11111111)
   }
@@ -12,9 +12,10 @@ class One extends Component {
     this.props.getTabelNum({})
   }
   render() {
+    console.log(this.props, '~~~~~~~EWDFG')
     return (
-      <div className="App">
-        <div>one</div>
+      <div >
+        <div>counter</div>
         <div>XYZ123</div>
         <div>
           <span>ABCabc</span>
@@ -36,4 +37,4 @@ export default connect(
   dispatch => bindActionCreators({
     getTabelNum
   }, dispatch)
-)(One)
+)(Counter)

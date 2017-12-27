@@ -4,17 +4,22 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {getTabelNum} from '../store/actions'
 
-class Two extends Component {
+class Game extends Component {
   confirm () {
     alert(11111111)
   }
   clear () {
     this.props.getTabelNum({})
   }
+  goBack () {
+    this.props.history.goBack()
+  }
   render() {
+    const { match } = this.props
+    console.log(match.params)
     return (
-      <div className="App">
-        <div>one</div>
+      <div>
+        <h3><button onClick={() => this.goBack()}>返回</button>{match.params.level} game</h3>
         <div>XYZ123</div>
         <div>
           <span>ABCabc</span>
@@ -23,6 +28,7 @@ class Two extends Component {
 
         <button onClick={() => this.confirm()}>确认</button>
         <button onClick={() => this.clear()}>重置</button>
+
       </div>
     );
   }
@@ -36,4 +42,4 @@ export default connect(
   dispatch => bindActionCreators({
     getTabelNum
   }, dispatch)
-)(Two)
+)(Game)
