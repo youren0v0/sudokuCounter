@@ -19,3 +19,9 @@ export function fetchArrNum(num = 0, col, row){
     arrNumObj
   }
 }
+export function clearArr(){
+  console.log('action clearArr')
+  return {
+    type:action.ARR_CLEAR
+  }
+}

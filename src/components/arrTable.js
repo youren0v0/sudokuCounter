@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {fetchArrNum} from '../store/actions'
-console.log(fetchArrNum, '!!!!!!!!!!!')
+import {fetchArrNum, clearArr} from '../store/actions'
+
 class ArrTable extends Component {
-  state = {}
+  componentWillMount () {
+    this.props.clearArr()
+  }
   change (e, col, row) {
     let value = e.target.value
     if (value === '0') {
@@ -16,20 +18,21 @@ class ArrTable extends Component {
     }
     this.props.fetchArrNum(parseFloat(value), col, row)
   }
+  componentWillUpdate(newProp) {
+    console.warn(newProp)
+  }
   render() {
-
     let allBody = []
     for (let col = 0; col < 9; col++) {
       let allTr = []
       for (let row = 0; row < 9; row++) {
         let value = ''
-        if (this.props.arr ) {
-          value = this.props.arr[col][row] === 0 ? '' : this.props.arr[col][row] + ''
+        if (this.props.arr && this.props.arr[col][row] !== 0) {
+          value = this.props.arr[col][row] + ''
         }
-        console.log(value,'@@@@@@@@@@@@@@@')
         allTr.push(
           <td key={row}>
-            <input type = "number" value={value} maxLength = "1" onChange={(e) => this.change(e, col, row)}/>
+            <input type = "number" value={value} max="9" maxLength = "1" onChange={(e) => this.change(e, col, row)}/>
           </td>
         )
       }
@@ -59,6 +62,7 @@ export default connect(
     arr: state.arrTable.arr
   }),
   dispatch => bindActionCreators({
-    fetchArrNum
+    fetchArrNum,
+    clearArr
   }, dispatch)
 )(ArrTable)
