@@ -28,8 +28,13 @@ class SmallTable extends Component {
     });
   }
   change (e, key) {
+    let value = e.target.value
+    if (value === '0') {
+      alert('数字不可为0')
+      value = ''
+    }
     let numObj = {}
-    numObj[key] = e.target.value
+    numObj[key] = value
     this.getTabelNum(numObj)
   }
   render() {
@@ -44,9 +49,10 @@ class SmallTable extends Component {
         if (this.props.num && this.props.num[key]){
           value = this.props.num[key]
         }
+        console.log(value, '@@@@@@@@@')
         allTr.push(
           <td key={keyJ}>
-            <input type = "text" maxLength = "1" value = {value} onChange={(e) => this.change(e, key)}/>
+            <input type = "number" maxLength = "1" value = {value} onChange={(e) => this.change(e, key)}/>
           </td>
         )
       }

@@ -6,7 +6,9 @@ import {getTabelNum} from '../store/actions'
 
 class Game extends Component {
   confirm () {
-    alert(11111111)
+    console.log(this.props.num)
+    let num = console.log(this.props.num)
+    
   }
   clear () {
     this.props.getTabelNum({})
@@ -38,6 +40,7 @@ class Game extends Component {
 
 export default connect(
   state => ({
+    num: state.table.num
   }),
   dispatch => bindActionCreators({
     getTabelNum

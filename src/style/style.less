@@ -3,6 +3,11 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none !important;
+  margin: 0;
+}
 a {
   text-decoration: none;
 }
@@ -58,4 +63,34 @@ td {
 }
 .tableBox{
   display: inline-block;
+}
+.arrTableBox{
+  border: 1px solid;
+  display: inline-block;
+  tr:nth-of-type(3n){
+    border-bottom: 2px solid;
+  }
+  td {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    input {
+      width: inherit;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      height: inherit;
+      line-height: inherit;
+      text-align: center;
+      font-size: 14px;
+      outline: none;
+    }
+  }
+  td:nth-of-type(3n){
+    border-right: 2px solid;
+  }
+  td:nth-last-of-type(1){
+    border-right: 1px solid;
+  }
 }

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Table from '../components/table'
+import ArrTable from '../components/arrTable'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {getTabelNum} from '../store/actions'
+import {fetchArrNum} from '../store/actions'
 
 class Counter extends Component {
   confirm () {
-    alert(11111111)
+    console.log(this.props.arr)
   }
   clear () {
-    this.props.getTabelNum({})
+    this.props.fetchArrNum('clear')
   }
   render() {
     console.log(this.props, '~~~~~~~EWDFG')
@@ -19,10 +19,10 @@ class Counter extends Component {
         <div>XYZ123</div>
         <div>
           <span>ABCabc</span>
-          <Table />
+          <ArrTable />
         </div>
 
-        <button onClick={() => this.confirm()}>确认</button>
+        <button onClick={() => this.confirm()}>计算</button>
         <button onClick={() => this.clear()}>重置</button>
       </div>
     );
@@ -33,8 +33,9 @@ class Counter extends Component {
 
 export default connect(
   state => ({
+    arr: state.arrTable.arr
   }),
   dispatch => bindActionCreators({
-    getTabelNum
+    fetchArrNum
   }, dispatch)
 )(Counter)
