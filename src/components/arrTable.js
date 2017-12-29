@@ -32,7 +32,7 @@ class ArrTable extends Component {
         }
         allTr.push(
           <td key={row}>
-            <input type = "number" value={value} max="9" maxLength = "1" onChange={(e) => this.change(e, col, row)}/>
+            <input type = "text" value={value} maxLength = "1" onChange={(e) => this.change(e, col, row)}/>
           </td>
         )
       }

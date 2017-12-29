@@ -19,6 +19,19 @@ export function fetchArrNum(num = 0, col, row){
     arrNumObj
   }
 }
+export function setAllArr(arr = []){
+  console.log(arr, 'action')
+  if (arr.length === 0) {
+    clearArr()
+    return function (dispatch) {
+      dispatch(clearArr())
+    }
+  }
+  return {
+    type:action.ALL_ARR,
+    arr
+  }
+}
 export function clearArr(){
   console.log('action clearArr')
   return {

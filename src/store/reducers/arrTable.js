@@ -1,7 +1,7 @@
 /**
  * Created by zhuyue on 17/12/26.
  */
-import {ARR_NUM_OBJ, ARR_CLEAR} from '../constants'
+import {ARR_NUM_OBJ, ARR_CLEAR, ALL_ARR} from '../constants'
 
 const initState = {}
 
@@ -9,12 +9,12 @@ export default function getArr(state = initState,action){
   switch(action.type){
     case ARR_NUM_OBJ:
       let arrObj = action.arrNumObj
-      let arr = state.arr
+      let arr = [...state.arr]
       arr[arrObj.col][arrObj.row] = arrObj.num
       console.log(arr)
       return {
         ...state,
-        arr: [...arr]
+        arr
       }
     case ARR_CLEAR:
       let newArr = new Array(9)
@@ -27,6 +27,11 @@ export default function getArr(state = initState,action){
       return {
         ...state,
         arr: newArr
+      }
+    case ALL_ARR:
+      return {
+        ...state,
+        arr: [...action.arr]
       }
     default:
       return state
