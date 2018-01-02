@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from '../components/table'
+import ArrTable from '../components/arrTable'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {getTabelNum} from '../store/actions'
@@ -25,7 +25,7 @@ class Game extends Component {
         <div>XYZ123</div>
         <div>
           <span>ABCabc</span>
-          <Table />
+          <ArrTable />
         </div>
 
         <button onClick={() => this.confirm()}>确认</button>

@@ -12,19 +12,15 @@ class Counter extends Component {
     let allArr = this.props.arr
     let valid = (col, row) => {
       // 九宫格判定
-      let bigCol = Math.floor(col/3)*3  // 计算九宫格位置
-      let bigRow = Math.floor(row/3)*3  // 计算九宫格位置
-      let _i = col%3                    // 自己在九宫格内的坐标
-      let _j = row%3                    // 自己在九宫格内的坐标
+      let bigCol = Math.floor(col/3)*3  // 小九宫格在数独里的坐标
+      let bigRow = Math.floor(row/3)*3  // 小九宫格在数独里的坐标
+      let _i = col%3                    // 自己在小九宫格内的坐标
+      let _j = row%3                    // 自己在小九宫格内的坐标
       for (let i = 0; i < 3; i++ ) {
         for (let j = 0; j < 3; j++) {
-          // if (i !== _i && j !== _j && allArr[bigCol + i][bigRow + j] !== 0 && allArr[bigCol + i][bigRow + j] === allArr[col][row]) {
           // 需要先排除自己
           if (i !== _i && j !== _j && allArr[bigCol + i][bigRow + j] === allArr[col][row]) {
             return false
-                        // 需要排除0么? 不排除应该也可以,排除会减少计算么?
-                        // 会!居然少了200多毫秒
-                        // 可是下面减少判0之后时间居然多了,很疑惑
           }
         }
       }
@@ -41,17 +37,12 @@ class Counter extends Component {
     }
 
     // 循环遍历
-
     let tryNum = 0
     let stack = []
     let onOff = false                        // 判断是否是再次进入的开关
     for (let col = 0; col < 9;) {
       for (let row = 0; row <9;) {
         // if (tryNum > 5000) {
-        //   let time = (new Date().getTime() - startTime)/1000 + 's'
-        //   this.setState({time, tryNum})
-        //   console.log(JSON.stringify(stack), 'stack')
-        //   console.log(allArr)
         //   return
         //   //调试用
         // }
