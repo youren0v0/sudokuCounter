@@ -6,10 +6,12 @@ class NewGame extends Component {
     let level = e.target.value
     const { history } = this.props
     if (level) {
+      console.log(level, 'level')
       history.push(`/newGame/${level}`)
     }
   }
   render() {
+    console.log(this.props, '~1~~~~~~~~~~~~')
     return (
       <div>
        <h3>new game</h3>

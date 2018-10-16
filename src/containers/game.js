@@ -3,7 +3,8 @@ import ArrTable from '../components/arrTable'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {getTabelNum} from '../store/actions'
-
+import { Button, Icon, Radio } from 'antd';
+// import 'antd/dist/antd.css'
 class Game extends Component {
   confirm () {
     console.log(this.props.num)
@@ -21,16 +22,16 @@ class Game extends Component {
     console.log(match.params)
     return (
       <div>
-        <h3><button onClick={() => this.goBack()}>返回</button>{match.params.level} game</h3>
+        <h3><Button type="primary" size="default" onClick={() => this.goBack()}><Icon type="left" />返回</Button>{match.params.level} game</h3>
         <div>XYZ123</div>
         <div>
           <span>ABCabc</span>
           <ArrTable />
         </div>
-
-        <button onClick={() => this.confirm()}>确认</button>
-        <button onClick={() => this.clear()}>重置</button>
-
+        <Radio.Group size="large">
+          <Radio.Button onClick={() => this.confirm()}>确认</Radio.Button>
+          <Radio.Button onClick={() => this.clear()}>重置</Radio.Button>
+        </Radio.Group>
       </div>
     );
   }
