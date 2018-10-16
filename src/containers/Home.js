@@ -53,10 +53,10 @@ class Home extends Component {
     return (
       <Layout>
         <div >
-          <span onClick={() => {console.log(this.refs.audio, '111')}}>~~~~~~</span>
-          <audio src={music} ref="audio" onClick={(e) => {console.log(e.target, '222')}}>
-            1111111111
-          </audio>
+          {/*  <span onClick={() => {console.log(this.refs.audio, '111')}}>~~~~~~</span>
+           <audio src={music} ref="audio" onClick={(e) => {console.log(e.target, '222')}}>
+           1111111111
+           </audio>*/}
         </div>
         <Header style={{ background: '#999' }}>Header</Header>
         <Layout>
